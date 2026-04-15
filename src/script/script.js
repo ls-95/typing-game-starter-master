@@ -104,9 +104,27 @@ function updateTime() {
   timeEl.textContent = `${time}s`;
   if (time === 0) {
     clearInterval(timer);
+    gameOver();
   }
 }
 const timer = setInterval(updateTime, 1000);
+
+function gameOver() {
+  endgameEl.style.display = "block";
+
+  const loseTitle = document.createElement("h2");
+  loseTitle.textContent = "Game Over!";
+  endgameEl.appendChild(loseTitle);
+
+  const button = document.createElement("button");
+  button.textContent = "Restart";
+
+  button.addEventListener("click", function () {
+    location.reload();
+  });
+
+  endgameEl.appendChild(button);
+}
 
 text.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
