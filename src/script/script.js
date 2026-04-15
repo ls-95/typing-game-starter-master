@@ -139,3 +139,7 @@ text.addEventListener("keypress", function (e) {
     }
   }
 });
+
+settingsBtn.addEventListener("click", function () {
+  settings.classList.toggle("hide");
+});
