@@ -34,6 +34,11 @@ const words = [
 
 //Initializing word
 let randomWord;
+function addWordToDOM() {
+  randomWord = Math.floor(Math.random() * words.length);
+  word.textContent = words[randomWord];
+}
+addWordToDOM();
 
 //Initializing score
 let score = 0;
