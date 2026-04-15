@@ -99,6 +99,7 @@ function updateScore() {
 
 //Initializing time
 let time = 10;
+let timeBonus = 5;
 function updateTime() {
   time--;
   timeEl.textContent = `${time}s`;
@@ -131,7 +132,7 @@ text.addEventListener("keypress", function (e) {
     if (this.value === randomWord) {
       updateScore();
       addWordToDOM();
-      time += 5;
+      time += timeBonus;
       this.value = "";
     } else {
       addWordToDOM();
@@ -142,4 +143,18 @@ text.addEventListener("keypress", function (e) {
 
 settingsBtn.addEventListener("click", function () {
   settings.classList.toggle("hide");
+});
+
+difficultySelect.addEventListener("change", function () {
+  if (this.value === "hard") {
+    time = 5;
+    timeBonus = 3;
+  } else if (this.value === "medium") {
+    time = 7;
+    timeBonus = 4;
+  } else {
+    time = 10;
+    timeBonus = 5;
+  }
+  timeEl.textContent = `${time}s`;
 });
