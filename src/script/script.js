@@ -99,12 +99,21 @@ function updateScore() {
 
 //Initializing time
 let time = 10;
+function updateTime() {
+  time--;
+  timeEl.textContent = `${time}s`;
+  if (time === 0) {
+    clearInterval(timer);
+  }
+}
+const timer = setInterval(updateTime, 1000);
 
 text.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     if (this.value === randomWord) {
       updateScore();
       addWordToDOM();
+      time += 5;
       this.value = "";
     } else {
       addWordToDOM();
